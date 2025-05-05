@@ -44,8 +44,11 @@ class UserLoginSerializer(serializers.Serializer):
         
         refresh = RefreshToken.for_user(user)
         return {
-            'message': "Login successful",
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         }
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'email']

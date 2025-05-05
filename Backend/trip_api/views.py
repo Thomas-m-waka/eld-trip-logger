@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import *
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from rest_framework.exceptions import PermissionDenied
 
 class RegisterAPIView(APIView):
     def post(self, request):
@@ -32,11 +32,7 @@ class ProfileAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        user = request.user
-        data = {
-            'username': user.username,
-            'email': user.email,
-        }
-        return Response(data, status=status.HTTP_200_OK)
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
