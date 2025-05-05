@@ -5,7 +5,6 @@ class Trip(models.Model):
     driver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="trips")
     current_location = models.CharField(max_length=255)
     pickup_location = models.CharField(max_length=255)
-    dropoff_location = models.CharField(max_length=255)
     cycle_hours_used = models.PositiveIntegerField(help_text="Hours used in the 70-hour cycle")
     created_at = models.DateTimeField(auto_now_add=True)
 

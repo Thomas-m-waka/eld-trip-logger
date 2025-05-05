@@ -52,3 +52,30 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username', 'email']
+
+class TripSerializer(serializers.ModelSerializer):
+    driver = serializers.StringRelatedField()
+    created_at = serializers.DateTimeField(read_only=True)
+
+
+    class Meta:
+        model = Trip
+        fields = ['id', 'driver', 'current_location', 'pickup_location', 'cycle_hours_used', 'created_at']
+
+
+class DailyLogSheetSerializer(serializers.ModelSerializer):
+    trip = TripSerializer()
+    date = serializers.TimeField(read_only=True)
+
+    class Meta:
+        model = DailyLogSheet
+        fields = ['id', 'trip', 'date', 'driver_number', 'driver_initials', 'co_driver_name', 'total_miles', 'vehicle_number', 'shipper_name', 'commodity', 'load_number', 'home_address']
+
+
+class ELDLogEntrySerializer(serializers.ModelSerializer):
+    daily_log = DailyLogSheetSerializer()
+    time = serializers.TimeField(read_only=True)
+
+    class Meta:
+        model = ELDLogEntry
+        fields = ['id', 'daily_log', 'time', 'status', 'location', 'remarks']
