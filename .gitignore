@@ -1,0 +1,21 @@
+# Ignore Python cache
+Backend/**/__pycache__/
+Backend/**/*.py[cod]
+
+# Ignore SQLite DB and local logs
+Backend/**/*.sqlite3
+Backend/**/*.log
+
+
+
+# Ignore virtual environment (e.g., Backend/venv/)
+Backend/venv/
+Backend/ENV/
+
+# Ignore environment files
+Backend/.env
+Backend/**/*.env
+
+# IDE/editor config files
+.vscode/
+.idea/
