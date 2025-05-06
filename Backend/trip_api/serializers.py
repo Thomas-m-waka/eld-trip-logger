@@ -53,29 +53,41 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'email']
 
-class TripSerializer(serializers.ModelSerializer):
-    driver = serializers.StringRelatedField()
-    created_at = serializers.DateTimeField(read_only=True)
 
+class TripSerializer(serializers.ModelSerializer):
+    driver = serializers.StringRelatedField(read_only=True)
+    created_at = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Trip
-        fields = ['id', 'driver', 'current_location', 'pickup_location', 'cycle_hours_used', 'created_at']
+        fields = [
+            'id', 'driver', 'current_location_name', 'current_latitude', 'current_longitude',
+            'pickup_location_name', 'pickup_latitude', 'pickup_longitude',
+            'cycle_hours_used', 'created_at'
+        ]
 
 
 class DailyLogSheetSerializer(serializers.ModelSerializer):
-    trip = TripSerializer()
-    date = serializers.TimeField(read_only=True)
+    trip = serializers.PrimaryKeyRelatedField(queryset=Trip.objects.all())
+    total_miles = serializers.IntegerField(read_only=True)
+    date = serializers.DateField(read_only=True) 
 
     class Meta:
         model = DailyLogSheet
-        fields = ['id', 'trip', 'date', 'driver_number', 'driver_initials', 'co_driver_name', 'total_miles', 'vehicle_number', 'shipper_name', 'commodity', 'load_number', 'home_address']
+        fields = ['id', 'trip', 'date', 'driver_number', 'driver_initials',
+            'co_driver_name', 'total_miles', 'vehicle_number', 'shipper_name',
+            'commodity', 'load_number', 'home_address']
 
 
 class ELDLogEntrySerializer(serializers.ModelSerializer):
-    daily_log = DailyLogSheetSerializer()
+    daily_log = serializers.PrimaryKeyRelatedField(
+        queryset=DailyLogSheet.objects.all())
+    
     time = serializers.TimeField(read_only=True)
 
     class Meta:
         model = ELDLogEntry
-        fields = ['id', 'daily_log', 'time', 'status', 'location', 'remarks']
+        fields = [
+            'id', 'daily_log', 'time', 'status', 'location',
+            'latitude', 'longitude', 'remarks'
+        ]

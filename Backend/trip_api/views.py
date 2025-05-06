@@ -65,3 +65,53 @@ class TripDetailView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return Trip.objects.filter(driver=self.request.user)
+    
+
+
+class DailyLogCreateView(generics.CreateAPIView):
+    queryset = DailyLogSheet.objects.all()
+    serializer_class = DailyLogSheetSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+class DailyLogListView(generics.ListAPIView):
+    serializer_class = DailyLogSheetSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return DailyLogSheet.objects.filter(trip__driver=self.request.user)
+
+class DailyLogDetailView(generics.RetrieveAPIView):
+    serializer_class = DailyLogSheetSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'id'
+
+    def get_queryset(self):
+        return DailyLogSheet.objects.filter(trip__driver=self.request.user)
+
+
+
+class ELDLogEntryCreateView(generics.CreateAPIView):
+    serializer_class = ELDLogEntrySerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        eld_log = serializer.save()
+        ELDLogEntry.calculate_daily_miles(eld_log.daily_log)
+
+class ELDLogEntryListView(generics.ListAPIView):
+    serializer_class = ELDLogEntrySerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return ELDLogEntry.objects.filter(daily_log__trip__driver=self.request.user)
+    
+class ELDLogEntryDetailView(generics.RetrieveAPIView):
+    serializer_class = ELDLogEntrySerializer
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'id'
+
+    def get_queryset(self):
+        return ELDLogEntry.objects.filter(daily_log__trip__driver=self.request.user)
