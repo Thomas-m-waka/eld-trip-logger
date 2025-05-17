@@ -2,3 +2,4 @@ from django.contrib import admin
 from .models import *
 admin.site.register(Trip)
 admin.site.register(DailyLogSheet)
+admin.site.register(ELDLogEntry)

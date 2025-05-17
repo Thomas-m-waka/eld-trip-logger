@@ -1,0 +1,330 @@
+/* AboutPage.css - Consistent with your design system */
+
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #166088;
+    --accent-color: #4fc3f7;
+    --text-color: #333;
+    --light-color: #f8f9fa;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --section-padding: 5rem 2rem;
+  }
+  
+  .about-page {
+    padding-top: 80px; /* Account for fixed navbar */
+  }
+  
+  /* Hero Section */
+  .about-hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+  
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .about-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-hero .highlight {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .about-hero .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: rgba(79, 195, 247, 0.5);
+    z-index: -1;
+    border-radius: 3px;
+  }
+  
+  .about-hero p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+  
+  /* Our Story Section */
+  .our-story {
+    display: flex;
+    align-items: center;
+    padding: var(--section-padding);
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 3rem;
+  }
+  
+  .story-content {
+    flex: 1;
+  }
+  
+  .story-content h2 {
+    font-size: 2.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .story-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+  
+  .story-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .image-placeholder {
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
+    background-color: rgba(79, 195, 247, 0.1);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .placeholder-icon {
+    font-size: 5rem;
+    color: var(--accent-color);
+    opacity: 0.5;
+  }
+  
+  /* Mission Section */
+  .mission-section {
+    padding: var(--section-padding);
+    background-color: var(--light-color);
+    text-align: center;
+  }
+  
+  .mission-section h2 {
+    font-size: 2.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .mission-statement {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: #555;
+    font-style: italic;
+    line-height: 1.6;
+  }
+  
+  .mission-points {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  
+  .mission-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .mission-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .mission-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+  
+  .mission-card p {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  /* Stats Section */
+  .stats-section {
+    padding: var(--section-padding);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+  }
+  
+  .stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  
+  .stat-card {
+    text-align: center;
+    padding: 2rem;
+    min-width: 200px;
+  }
+  
+  .stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+  }
+  
+  .stat-card h3 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-card p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+  
+  /* Team Section */
+  .team-section {
+    padding: var(--section-padding);
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .team-section h2 {
+    font-size: 2.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .team-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 3rem;
+  }
+  
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  /* CTA Section */
+  .about-cta {
+    padding: var(--section-padding);
+    text-align: center;
+    background-color: white;
+  }
+  
+  .about-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+  }
+  
+  .cta-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3);
+  }
+  
+  .cta-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 111, 165, 0.4);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .our-story {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .story-image {
+      margin-top: 2rem;
+    }
+    
+    .mission-card {
+      width: 100%;
+      max-width: 350px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    :root {
+      --section-padding: 4rem 1.5rem;
+    }
+    
+    .about-hero {
+      padding: 4rem 1.5rem;
+    }
+    
+    .about-hero h1 {
+      font-size: 2.4rem;
+    }
+    
+    .about-hero p {
+      font-size: 1.1rem;
+    }
+    
+    .story-content h2 {
+      font-size: 1.8rem;
+    }
+    
+    .mission-statement {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    :root {
+      --section-padding: 3rem 1rem;
+    }
+    
+    .about-hero h1 {
+      font-size: 2rem;
+    }
+    
+    .image-placeholder {
+      height: 250px;
+    }
+    
+    .stat-card {
+      min-width: 150px;
+      padding: 1.5rem;
+    }
+    
+    .stat-card h3 {
+      font-size: 2rem;
+    }
+  }

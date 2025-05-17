@@ -1,0 +1,336 @@
+/* HomePage.css */
+
+/* Reuse the same variables from Navbar for consistency */
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #166088;
+    --accent-color: #4fc3f7;
+    --text-color: #333;
+    --light-color: #f8f9fa;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .homepage-container {
+    padding-top: 60px; /* Account for fixed navbar */
+    overflow-x: hidden;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 50vh;
+  }
+  
+  .hero-content {
+    flex: 1;
+    max-width: 600px;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+  }
+  
+  .highlight {
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: rgba(79, 195, 247, 0.3);
+    z-index: -1;
+    border-radius: 3px;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+    color: #555;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .pulse-animation {
+    position: relative;
+  }
+  
+  .map-icon {
+    font-size: 15rem;
+    color: var(--accent-color);
+    opacity: 0.9;
+    filter: drop-shadow(0 5px 15px rgba(79, 195, 247, 0.4));
+  }
+  
+  /* CTA Buttons */
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.8rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+  
+  .cta-button.primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3);
+  }
+  
+  .cta-button.primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 111, 165, 0.4);
+  }
+  
+  .cta-button.secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+  }
+  
+  .cta-button.secondary:hover {
+    background-color: rgba(74, 111, 165, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .button-icon {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 5rem 2rem;
+    background-color: #f9fbfd;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+    position: relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 1rem auto 0;
+    border-radius: 2px;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .feature-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+  
+  .feature-card p {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  /* Testimonial Section */
+  .testimonial-section {
+    padding: 5rem 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+  }
+  
+  .testimonial-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .quote-icon {
+    font-size: 3rem;
+    opacity: 0.2;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonial-text {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .author-info h4 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .author-info p {
+    margin: 0;
+    opacity: 0.8;
+  }
+  
+  /* Footer CTA */
+  .footer-cta {
+    padding: 5rem 2rem;
+    text-align: center;
+    background-color: white;
+  }
+  
+  .footer-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+  
+  .footer-cta p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .hero-section {
+      flex-direction: column;
+      text-align: center;
+      padding-top: 2rem;
+    }
+    
+    .hero-content {
+      margin-bottom: 3rem;
+      max-width: 100%;
+    }
+    
+    .hero-cta {
+      justify-content: center;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .map-icon {
+      font-size: 10rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+    }
+    
+    .testimonial-text {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 1.8rem;
+    }
+    
+    .hero-cta {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .cta-button {
+      width: 100%;
+    }
+    
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }

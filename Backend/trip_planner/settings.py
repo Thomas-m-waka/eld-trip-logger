@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'trip_api',
     'rest_framework',
     'rest_framework.authtoken',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -148,6 +150,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "trip_api/static")]
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, "trip_api/static")]
 
- 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  
+    
+]
+
+#CORS_ALLOW_CREDENTIALS = True  

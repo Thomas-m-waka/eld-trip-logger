@@ -1,0 +1,77 @@
+.daily-log-form-container {
+    max-width: 800px;
+    margin: 100px auto 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .daily-log-form-container h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+  
+  .daily-log-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.95rem;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    background-color: #fff;
+  }
+
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .daily-log-form {
+      grid-template-columns: 1fr;
+    }
+    
+    .daily-log-form-container {
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .daily-log-form-container {
+      padding: 1rem;
+      margin: 1rem;
+    }
+    
+    .daily-log-form-container h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
