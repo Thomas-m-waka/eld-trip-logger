@@ -11,21 +11,42 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
+from dotenv import load_dotenv
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z4wst4m@n3y095zrktw$dzk3*%733=7pmj9ms&lv(7!ts%pb^8'
+import os
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+def require_env(var_name):
+    value = os.environ.get(var_name)
+    if value is None:
+        raise RuntimeError(f"Missing required environment variable: {var_name}")
+    return value
 
-ALLOWED_HOSTS = []
+# Base settings
+DEBUG = os.environ.get('DEBUG') == 'True'
+
+SECRET_KEY = require_env('SECRET_KEY')
+
+ALLOWED_HOSTS = require_env('ALLOWED_HOSTS').split(',')
+
+# Security settings
+SECURE_HSTS_SECONDS = int(require_env('SECURE_HSTS_SECONDS'))
+SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT') == 'True'
+SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE') == 'True'
+CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE') == 'True'
+
+# Optional but recommended
+SECURE_HSTS_INCLUDE_SUBDOMAINS = os.environ.get('SECURE_HSTS_INCLUDE_SUBDOMAINS') == 'True'
+SECURE_HSTS_PRELOAD = os.environ.get('SECURE_HSTS_PRELOAD') == 'True'
+
 
 
 # Application definition
@@ -78,12 +99,23 @@ WSGI_APPLICATION = 'trip_planner.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+load_dotenv()  
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(
+        os.environ.get('DATABASE_URL')
+       
+    )
 }
+
 
 
 # Password validation
