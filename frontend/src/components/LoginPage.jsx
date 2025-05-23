@@ -109,11 +109,11 @@ const Login = () => {
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
-            <div className="form-options">
+            {/* <div className="form-options">
               <Link to="/forgot-password" className="forgot-password">
                 Forgot password?
               </Link>
-            </div>
+            </div> */}
           </motion.div>
 
           
