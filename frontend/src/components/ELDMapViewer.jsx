@@ -14,22 +14,20 @@ import {
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-
-
-
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+// ✅ Fix broken default Leaflet marker icons in React+Vite/Webpack
+delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: markerIcon2x,
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
 });
-// Fix broken marker icons
 
-
-// Custom icons
+// ✅ Custom icons
 const startIcon = new L.Icon({
   iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
   iconSize: [30, 30],
@@ -44,7 +42,14 @@ const endIcon = new L.Icon({
   popupAnchor: [0, -30],
 });
 
-// Component to fit bounds to route
+const midIcon = new L.Icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/252/252025.png',
+  iconSize: [25, 25],
+  iconAnchor: [12, 25],
+  popupAnchor: [0, -25],
+});
+
+// ✅ FitBounds helper
 const FitBoundsHelper = ({ positions }) => {
   const map = useMap();
 
@@ -141,12 +146,10 @@ const ELDMapViewer = () => {
           {/* Other Log Markers */}
           {logs.map((log, index) => {
             const position = [log.latitude, log.longitude];
-
-            // Skip start/end marker again
             if (index === 0 || index === logs.length - 1) return null;
 
             return (
-              <Marker key={log.id} position={position}>
+              <Marker key={log.id} position={position} icon={midIcon}>
                 <Popup>
                   <strong>{log.timestamp}</strong>
                   <br />
@@ -169,4 +172,5 @@ const ELDMapViewer = () => {
 };
 
 export default ELDMapViewer;
+
 

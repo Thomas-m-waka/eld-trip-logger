@@ -202,15 +202,17 @@ const DailyLogSheetForm = () => {
         />
         </motion.div>
 
-        <motion.button 
-          type="submit" 
-          disabled={isSubmitting}
-          variants={itemVariants}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          {isSubmitting ? 'Submitting...' : 'Submit Log Sheet'}
-        </motion.button>
+        <motion.button
+  type="submit"
+  disabled={isSubmitting}
+  variants={itemVariants}
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="submit-button"
+>
+  {isSubmitting ? 'Submitting...' : 'Submit Log Sheet'}
+</motion.button>
+
       </motion.form>
     </motion.div>
   );

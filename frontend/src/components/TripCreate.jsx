@@ -3,26 +3,24 @@ import { MapContainer, TileLayer, Marker, useMapEvents, ZoomControl } from 'reac
 import L from 'leaflet';
 import { motion } from 'framer-motion';
 import api from '../api/api';
+import 'leaflet/dist/leaflet.css';
 import '../assets/css/TripCreate.css';
 
+
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
+
+
 const ORS_API_KEY = '5b3ce3597851110001cf62485d42edc5368d4db1a3c3aafe9abaaa38';
-
-// Custom marker icons
-const greenIcon = new L.Icon({
-  iconUrl: 'https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=home|00cc44',
-  iconSize: [40, 60],  
-  iconAnchor: [20, 60], 
-  popupAnchor: [0, -60], 
-  zIndexOffset: 1000, 
-});
-
-const blueIcon = new L.Icon({
-  iconUrl: 'https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=flag|3366cc',
-  iconSize: [40, 60],  
-  iconAnchor: [20, 60], 
-  popupAnchor: [0, -60], 
-  zIndexOffset: 1000, 
-});
 
 function PickupSelector({ setPickup }) {
   useMapEvents({
@@ -86,7 +84,6 @@ const TripCreate = () => {
       };
       await api.post('/trips/create/', payload);
       alert('Trip created successfully!');
-      // Reset form
       setPickup({ lat: null, lng: null, name: '' });
       setCycleHoursUsed('');
     } catch (error) {
@@ -161,7 +158,7 @@ const TripCreate = () => {
             <MapContainer
               center={[currentLocation.lat, currentLocation.lng]}
               zoom={13}
-              className="map-container"
+              style={{ height: '400px', width: '100%', borderRadius: '10px' }}
               scrollWheelZoom={true}
               zoomControl={false} 
             >
@@ -170,9 +167,9 @@ const TripCreate = () => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <PickupSelector setPickup={setPickup} />
-              <Marker position={[currentLocation.lat, currentLocation.lng]} icon={greenIcon} />
+              <Marker position={[currentLocation.lat, currentLocation.lng]} />
               {pickup.lat && (
-                <Marker position={[pickup.lat, pickup.lng]} icon={blueIcon} />
+                <Marker position={[pickup.lat, pickup.lng]} />
               )}
               <ZoomControl position="bottomright" />
             </MapContainer>
